@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Pokemon from './Pokemon';
 
 function Pokedex() {
   const [pokemonDetails, setPokemonDetails] = useState([]);
@@ -24,27 +25,12 @@ function Pokedex() {
         <button onClick={() => handleLanguageChange('french')}>French</button>
       </div>
       </center>
-      {pokemonDetails.map((pokemon, index) => (
-        <div className="card" key={index}>
-          <img className="pic" alt=" " src={pokemon.image} />
-          <h2 className="id">{pokemon.id}</h2>
-          <h2 className="name">{pokemon.name[language]}</h2>
-          {pokemon.type.length === 1 ? (
-            <h2 className="type">Type: {pokemon.type[0]}</h2>
-          ) : (
-            <>
-              <h2 className="type">{pokemon.type[0]}</h2>
-              <h2 className="type2"> {pokemon.type[1]}</h2>
-            </>
-          )}
-          <h3 className="base">
-            HP: {pokemon.base.HP}, Attack: {pokemon.base.Attack}, Defense: {pokemon.base.Defense}, 
-            Sp. Attack: {pokemon.base.Sp_Attack}, Sp. Defense: {pokemon.base.Sp_Defense}, Speed: {pokemon.base.Speed}
-          </h3>
-        </div>
-      ))}
-    </div>
+        {pokemonDetails.map((pokemon) => (
+          <div className="card" key={pokemon.id}>
+            <Pokemon {...pokemon} language={language} />
+          </div>
+        ))}
+      </div>
   );
 }
-
 export default Pokedex;
