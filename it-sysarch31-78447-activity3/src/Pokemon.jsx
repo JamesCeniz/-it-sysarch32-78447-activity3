@@ -10,8 +10,7 @@ function Pokemon({ name, type, base, image, id, language }) {
       <div className="info">
         <h2 className="id">{id}</h2>
         <h2 className="name">{name[language]}</h2>
-      </div>
-      {type.length === 1 ? (
+        {type.length === 1 ? (
         <h2 className="type">Type: {type[0]}</h2>
       ) : (
         <>
@@ -19,6 +18,7 @@ function Pokemon({ name, type, base, image, id, language }) {
           <h2 className="type2"> {type[1]}</h2>
         </>
       )}
+      </div>
      <div className="base">
         <div>
           <p>HP: {base.HP}</p>
